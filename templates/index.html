@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    <div>
+        <form action="/pdf" method="POST" enctype=multipart/form-data>
+            <label for="">PDF
+                <input type="file" name="tex" multiple>
+                <input type="submit">
+            </label>
+        </form>
+    </div>
+
+{% endblock %}
