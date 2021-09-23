@@ -5,18 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}"></link>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
 
     <title>Document</title>
 </head>
 <body>
-    <nav>
-        <div>yo</div>
-        <div>About</div>
-        <div>Contact</div>
+    <nav class="navbar is-primary">
+        <div id="brand1" class="navbar-brand">PDF to Exel</div>
+        <div class="nav-link">
+            <a class="navbar-item" href="">About</a>
+            <a class="navbar-item" href="">Contact</a>
+        </div>
     </nav>
     <main>
         {% block content %}
         {% endblock %}
     </main> 
+    <script src="{{url_for('static',filename='js/script.js')}}"></script>
 </body>
 </html> 
