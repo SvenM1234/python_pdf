@@ -3,6 +3,8 @@ from flask import Flask
 from flask import render_template, request
 from livereload import Server
 import os
+from datetime import datetime
+
 
 
 
@@ -26,11 +28,13 @@ def accueil():
 
 @app.route('/pdf', methods = ['POST'])
 def pdf():
-
-    print(request.form)
     print(request.files)
-
-    request.files["tex"].save(os.path.join(app.config['UPLOAD_FOLDER'],"tex.pdf"))
+    for file in request.files.getlist('resume'):
+        print(file)
+        print(file.headers.get('Content-Disposition').split(';')[2].split("=")[1].replace('"',''))
+        # name + datetime : 
+        # file.headers.get('Content-Disposition').split(';')[2].split("=")[1].replace('"','')) + "_" + str(datetime.now())
+        file.save(os.path.join(app.config['UPLOAD_FOLDER'], str(file.headers.get('Content-Disposition').split(';')[2].split("=")[1].replace('"','')) + "_" + str(datetime.now())).replace(" ", "_").replace(":", "_")+".pdf")
 
     return render_template('traitement_pdf.html')
 
