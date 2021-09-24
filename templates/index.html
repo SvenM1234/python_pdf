@@ -19,5 +19,16 @@
             <input class="button is-primary" type="submit" value="Valider">
         </form>
     </div>
+    <div class="part-list-pdf">
+        <h2 class="title-list-pdf">Liste PDF</h2>
+        <div class="cont-list-pdf">
+            {% for pdf in files %}
+                <div class="pdf-indiv">
+                    <img class="icon-pdf" src="{{url_for('static',filename='img/svg/pdf.svg')}}" alt="" title="{{pdf}}">
+                    <div class="title-pdf">{{pdf}}</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
 {% endblock %}

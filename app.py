@@ -14,16 +14,16 @@ app.config.from_pyfile('config.py')
 # print(app.config)
 
 @app.route('/')
-def hello():
-    
-    return render_template('index.html')
-
-    
-
 @app.route('/accueil')
-def accueil():
+def hello():
 
-    return render_template('index.html')
+    files = os.listdir(os.path.join(app.config['UPLOAD_FOLDER']))
+
+    for pdf in files:
+        print(pdf)
+    
+    return render_template('index.html', files=files)
+
 
 
 @app.route('/pdf', methods = ['POST'])
